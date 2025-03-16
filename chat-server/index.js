@@ -9,6 +9,11 @@ const io = new Server(server, { cors: { origin: "*" } });
 
 app.use(cors());
 
+// Add this route to respond to GET /
+app.get("/", (req, res) => {
+    res.send("Server is running...");
+});
+
 io.on("connection", (socket) => {
     console.log("A user connected");
     socket.on("disconnect", () => {
